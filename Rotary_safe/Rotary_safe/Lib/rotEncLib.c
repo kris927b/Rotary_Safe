@@ -5,15 +5,17 @@ void init_comp(){
 
 uint8_t read_rot_encoder(){
     static uint16_t oldState = readValue(), state = 0;
-    state = readValue();
-    if (state != oldState){
-        if (state == 1 && oldState == 3){ //CCW
-            return 0;
-        } else if (state == 3 && oldState == 1){ //CW
-            return 1;
+    while (1){
+        state = readValue();
+        if (state != oldState){
+            if (state == 1 && oldState == 3){ //CCW
+                return 0;
+            } else if (state == 3 && oldState == 1){ //CW
+                return 1;
+            }
         }
+        oldState == state;
     }
-    oldState == state;
 }
 
 void blink_LED(){
