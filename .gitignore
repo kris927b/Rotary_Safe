@@ -31,3 +31,11 @@
 # Debug files
 *.dSYM/
 *.su
+
+Rotary_safe/\.DS_Store
+
+Rotary_safe/Rotary_safe/\.DS_Store
+
+Rotary_safe/Rotary_safe/Lib/\.DS_Store
+
+\.DS_Store
