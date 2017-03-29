@@ -1,12 +1,14 @@
-#include "retEncLib.hs"
+#include "rotEncLib.h"
 
 void init_comp(){
-    DDRB |= (1 << DDB5); // LED as output
-    DDRB &= ~(1 << DDB7); // button as input
+    pinMode(B5, OUTPUT, DISABLED); // LED as output
+    pinMode(B7, INPUT, ENABLED); // button as input
+	pinMode(C0, INPUT, ENABLED);
+	pinMode(C1, INPUT, ENABLED);
 }
 
 uint8_t read_rot_encoder(){
-    static uint16_t oldState = readValue(), state = 0;
+    uint16_t oldState = readValue(), state = 0;
     while (1){
         state = readValue();
         if (state != oldState){
@@ -16,7 +18,7 @@ uint8_t read_rot_encoder(){
                 return 1;
             }
         }
-        oldState == state;
+        oldState = state;
     }
 }
 
@@ -25,7 +27,7 @@ void blink_LED(){
         delay(200);
         PORTB |= (1 << PORTB5);
         delay(200);
-        PORTB &= (1 << PORTB5);
+        PORTB &= ~(1 << PORTB5);
     }
 }
 
