@@ -1,3 +1,5 @@
+#include "retEncLib.hs"
+
 void init_comp(){
     DDRB |= (1 << DDB5); // LED as output
     DDRB &= ~(1 << DDB7); // button as input
