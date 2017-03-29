@@ -2,6 +2,7 @@
 #define ROTENCLIB_H_
 
 #include "std_lib.h"
+#include <avr/io.h>
 
 void init_comp();
 uint8_t read_rot_encoder();
